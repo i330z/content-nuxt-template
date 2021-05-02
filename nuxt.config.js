@@ -1,3 +1,4 @@
+import getRoutes from "./utils/getRoutes";
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -20,6 +21,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/bootstrap-grid.min.css',
+    '@/assets/css/style.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -37,7 +40,15 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
+
+  sitemap: {
+    hostname: 'https://www.helper-blog.com/',
+    routes() {
+      return getRoutes();
+    },
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},

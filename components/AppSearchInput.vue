@@ -5,7 +5,7 @@
       type="search"
       autocomplete="off"
       placeholder="Search Articles"
-      style="width:100%"
+      class="input-text"
     />
     <ul v-if="articles.length">
       <li v-for="article of articles" :key="article.slug">
@@ -39,3 +39,11 @@
     }
   }
 </script>
+
+<style scoped>
+.input-text{
+  padding: 8px 10px;
+  width: 100%;
+  margin: 20px 0px;
+}
+</style>
