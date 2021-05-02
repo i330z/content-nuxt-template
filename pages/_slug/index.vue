@@ -18,6 +18,10 @@
             </div>
             <div class="col-md-4 col-12" >
               Ads
+                <div class="more-stories" v-for="more in moreStories" :key="more.title">
+                  <h2>{{ more.title }}</h2>
+                </div>
+              
             </div>
           </div>
         </div>
@@ -29,8 +33,14 @@
   export default {
     async asyncData({ $content, params }) {
       const article = await $content('blog', params.slug).fetch()
+      const moreStories = await $content({ deep: true })
+      .only(['title', 'image', 'slug'])
+      .where({ title: { $ne: article.title } })
+      .sortBy('createdAt', 'desc')
+      .limit(3)
+      .fetch()
 
-      return { article }
+      return { article , moreStories}
     },
 
     head() {
@@ -91,5 +101,11 @@
     background: rgb(212, 252, 212);
     display: block;
     margin: 10px 0px;
+  }
+
+  .more-stories{
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 20px;
   }
 </style>
