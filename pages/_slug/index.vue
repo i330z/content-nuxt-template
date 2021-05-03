@@ -135,6 +135,39 @@
       ],
     };
   },
+
+   jsonld() {
+    const items = {
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id":
+          "https://northeastnomads-dev.web.app/" + this.article.slug
+      },
+      headline: this.article.title,
+      description: this.article.description,
+      image: "",
+      author: {
+        "@type": "Person",
+        name: "nomads"
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "NortheastNomads",
+        logo: {
+          "@type": "ImageObject",
+          url: this.article.featured.img
+        }
+      },
+      datePublished: "2021-04-12",
+      dateModified: "2021-04-13"
+    };
+    return {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      ...items
+    };
+  }
+
   }
 </script>
 

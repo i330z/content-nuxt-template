@@ -23,8 +23,6 @@
                   </div>
                 </div>
               </div>
-              
-             
           </div>
         </div>
       </div>
@@ -46,12 +44,30 @@ export default {
           articles
         }
 
+  },
+
+   jsonld() {
+   
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+       "name": "NorthEast Nomads",
+        "url": "https://northeastnomads-dev.web.app/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{search_term_string}",
+          "query-input": "required name=search_term_string"
+    }
   }
+}
 }
 </script>
 
 
 <style scoped>
+.main-wrapper{
+  min-height: 100vh;
+}
 .blog-post-card{
   /* padding: 20px; */
   /* height: 200px; */
