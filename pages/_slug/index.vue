@@ -158,8 +158,8 @@
           url: this.article.featured.img
         }
       },
-      datePublished: "2021-04-12",
-      dateModified: "2021-04-13"
+      datePublished: this.article.createdAt,
+      dateModified: this.article.updatedAt,
     };
     return {
       "@context": "https://schema.org",
