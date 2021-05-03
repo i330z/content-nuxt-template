@@ -5,6 +5,7 @@
           <div class="row">
             <div class="col-md-8 col-12 bg-white" >
             <h1>{{ article.title }}</h1>
+            <img :src="article.featured.img" :alt="article.featured.alt" class="featured-image">
                <div class="toc">
                   <nav>
                       <ul>
@@ -15,12 +16,25 @@
                   </nav>
                 </div>
               <nuxt-content :document="article" />
+              <hr>
+              <h2 class="my-4">Recommanded Articles</h2>
+              <div class="row">
+                <div class="col-md-6 col-12" v-for="more in moreStories" :key="more.title">
+                <div class="more-stories" >
+                  <img :src="more.featured.img" :alt="more.featured.alt" class="featured-image">
+                  <div class="more-stories-text">
+                    <h2>{{ more.title }}</h2>
+                    <n-link :to="more.slug">
+                      <button class="btn-default mt-3">View More</button>
+                    </n-link>
+                  </div>
+                </div>
+                </div>
+              </div>
             </div>
             <div class="col-md-4 col-12" >
               Ads
-                <div class="more-stories" v-for="more in moreStories" :key="more.title">
-                  <h2>{{ more.title }}</h2>
-                </div>
+                
               
             </div>
           </div>
@@ -34,7 +48,7 @@
     async asyncData({ $content, params }) {
       const article = await $content('blog', params.slug).fetch()
       const moreStories = await $content({ deep: true })
-      .only(['title', 'image', 'slug'])
+      .only(['title', 'featured', 'slug'])
       .where({ title: { $ne: article.title } })
       .sortBy('createdAt', 'desc')
       .limit(3)
@@ -52,11 +66,71 @@
           name: "description",
           content: this.article.description,
         },
+        {
+          property: "article:published_time",
+          content: this.article.createdAt,
+        },
+        {
+          property: "article:modified_time",
+          content: this.article.updatedAt,
+        },
+        {
+          property: "article:tag",
+          content: this.article.tags ? this.article.tags.toString() : "",
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.article.title
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: this.article.description
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.article.featured.img
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: this.article.title
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.article.title
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.article.description
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.article.featured.img
+        },
+        {
+          hid: 'og:image:secure_url',
+          property: 'og:image:secure_url',
+          content: this.article.featured.img
+        },
+        {
+          hid: 'og:image:alt',
+          property: 'og:image:alt',
+          content: this.article.title
+        },
+        { property: "og:image:width", content: "740" },
+        { property: "og:image:height", content: "300" },
       ],
       link: [
         {
+          hid:"canonical",
           rel: "canonical",
-          href: "https://nuxt-blog-template.com/" + this.article.dir,
+          href: "https://nuxt-blog-template.com/" + this.article.slug,
         },
       ],
     };
@@ -106,6 +180,21 @@
   .more-stories{
     border: 1px solid black;
     margin-bottom: 10px;
+    min-height: 370px;
+  }
+  .more-stories-text{
+    
     padding: 20px;
+  }
+
+  .featured-image{
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media(max-width:700px){
+    .more-stories{
+      min-height: 340px;
+    }
   }
 </style>
