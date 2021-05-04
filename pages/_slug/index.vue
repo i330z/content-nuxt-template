@@ -7,6 +7,7 @@
             <h1>{{ article.title }}</h1>
             <img :src="article.featured.img" :alt="article.featured.alt" class="featured-image">
                <div class="toc">
+                 <h2 class="mb-3">Table Of Content</h2>
                   <nav>
                       <ul>
                           <li v-for="link of article.toc" :key="link.id" >
@@ -15,6 +16,11 @@
                       </ul>
                   </nav>
                 </div>
+
+                
+              <social-share :title="article.title" :description="article.description" :slug="article.slug" :media="article.featured.img"/>
+
+
               <nuxt-content :document="article" />
               <hr>
               <h2 class="my-4">Recommanded Articles</h2>
@@ -199,7 +205,11 @@
     padding: 0px;
   }
 
-  ul > li{
+  ul>li{
+   list-style: square;
+  }
+  
+  ul > li:not(:last-child){
    padding-bottom: 20px;
   }
 
@@ -208,6 +218,8 @@
     background: rgb(212, 252, 212);
     display: block;
     margin: 10px 0px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
   }
 
   .more-stories{

@@ -13,7 +13,8 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "nuxt-jsonld": "^1.5.0"
+    "nuxt-jsonld": "^1.5.0",
+    "vue-social-sharing": "^3.0.7"
   },
   "devDependencies": {}
 }
