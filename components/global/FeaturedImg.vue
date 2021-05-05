@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="featured.img" :alt="featured.alt" class="featured-image">
+        <nuxt-img :src="featured.img" :alt="featured.alt" class="featured-image" fit="cover" sizes="sm:100vw md:50vw lg:400px" quality="50" format="webp" loading="lazy" />
     </div>
 </template>
 
@@ -19,6 +19,6 @@
 <style scoped>
 .featured-image{
     width: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 </style>

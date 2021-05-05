@@ -20,7 +20,7 @@
 <style scoped>
 .header{
     height: 50px;
-    background: green;
+    background: var(--primary);
 }
 
 nav{

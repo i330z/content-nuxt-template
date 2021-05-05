@@ -5,7 +5,7 @@
           <div class="row">
             <div class="col-md-8 col-12 bg-white" >
             <h1>{{ article.title }}</h1>
-            <img :src="article.featured.img" :alt="article.featured.alt" class="featured-image">
+            <nuxt-img :src="article.featured.img" :alt="article.featured.alt" class="featured-image" loading="lazy" fit="cover" quality="50" format="webp"/>
                <div class="toc">
                  <h2 class="mb-3">Table Of Content</h2>
                   <nav>
@@ -187,7 +187,7 @@
   .nuxt-content h2 {
     font-weight: bold;
     font-size: 28px;
-    color: green;
+    color: var(--primary);
     margin-bottom: 20px;
   }
   .nuxt-content h3 {
