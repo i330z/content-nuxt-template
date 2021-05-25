@@ -3,7 +3,7 @@
         <nav >
             <div class="d-flex justify-content-between align-items-center" style="height: 100%">
                 <div>
-                    <n-link to="/">BLOGGER</n-link>
+                    <n-link to="/">AnimeLyrics</n-link>
                 </div>
                 
                     <ul>
@@ -24,7 +24,7 @@
 }
 
 nav{
-    color: white;
+    color: black;
     padding: 0px 25px;
     height: 100%;
     font-size: 20px;
@@ -36,6 +36,6 @@ li{
 }
 
 a{
-    color: white;
+    color: black;
 }
 </style>

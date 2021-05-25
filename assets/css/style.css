@@ -1,5 +1,5 @@
 :root{
-    --primary: green;
+    --primary: #ffff64;
     --accent: #F3BC65;
 }
 
@@ -74,7 +74,7 @@ p{
   border: none;
   outline: none;
   background: var(--primary);
-  color: white;
+  color: black;
   font-weight: 600;
   cursor: pointer;
 }

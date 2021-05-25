@@ -2,27 +2,21 @@
   <div class="main-wrapper">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-md-2 col-12">
+        <div class="col-md-8 offset-md-2">
           <app-search-input />
-          {{ articles.fetured }}
-          <div v-for="article in articles" :key="article.slug">
-            
-              <div class="blog-post-card">
-                <div class="row">
-                  <div class="col-md-4">
-                    <img :src="article.featured.img" :alt="article.featured.alt" class="blog-post-img">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="p-2">
-                      <h2 class="mb-2">{{ article.title }}</h2>
-                      <p>{{ article.description }}</p>
-                      <n-link :to="article.slug">
-                        <button class="btn-default mt-3">VIEW POST</button>
-                      </n-link> 
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4" v-for="article in articles" :key="article.title">
+          <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">
+              <h2>{{ article.title }}</h2>
+              <n-link :to="article.slug">
+                <button class="btn-default mt-3">VIEW</button>
+              </n-link>
+            </div>
           </div>
         </div>
       </div>
@@ -76,7 +70,16 @@ export default {
   background: white;
 }
 
-.blog-post-card h2{
+.card{
+  border: 1px solid var(--primary);
+
+}
+
+.card-text{
+  padding: 20px;
+}
+
+/* .blog-post-card h2{
   font-size: 30px;
 }
 
@@ -89,6 +92,6 @@ export default {
   height: 100%;
   background: red;
   object-fit: cover;
-}
+} */
 
 </style>

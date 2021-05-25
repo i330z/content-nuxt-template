@@ -6,7 +6,7 @@
             <div class="col-md-8 col-12 bg-white" >
             <h1>{{ article.title }}</h1>
             <nuxt-img :src="article.featured.img" :alt="article.featured.alt" class="featured-image" loading="lazy" fit="cover" quality="50" format="webp"/>
-               <div class="toc">
+               <!-- <div class="toc">
                  <h2 class="mb-3">Table Of Content</h2>
                   <nav>
                       <ul>
@@ -15,7 +15,7 @@
                           </li>
                       </ul>
                   </nav>
-                </div>
+                </div> -->
 
                 
               <social-share :title="article.title" :description="article.description" :slug="article.slug" :media="article.featured.img"/>
@@ -30,7 +30,7 @@
                   <img :src="more.featured.img" :alt="more.featured.alt" class="featured-image">
                   <div class="more-stories-text">
                     <h2>{{ more.title }}</h2>
-                    <n-link :to="more.slug">
+                    <n-link :to="`/${more.slug}`">
                       <button class="btn-default mt-3">View More</button>
                     </n-link>
                   </div>
